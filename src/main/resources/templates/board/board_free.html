@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>자유게시판</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 검색창 */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-bar select,
+        .search-bar input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar input[type="text"] {
+            width: 600px;
+        }
+
+        .search-bar button {
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: none;
+            background-color: #2980b9;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #1f6391;
+        }
+
+        /* 게시판 테이블 */
+        .board-table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background: #fafafa;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .board-table th,
+        .board-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .board-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: bold;
+        }
+
+        .board-table tr:hover {
+            background-color: #ecf0f1;
+            cursor: pointer;
+        }
+
+        /* 글쓰기 버튼 */
+        .board-actions {
+            width: 80%;
+            margin: 20px auto;
+            text-align: right;
+        }
+
+        .board-actions button {
+            padding: 8px 16px;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .board-actions button:hover {
+            background-color: #1f844d;
+        }
+
+        .board-title {
+            text-align: center;
+            font-size: 28px;
+            margin: 0 0 30px 0;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">📚 도서 대출 서비스</div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li>
+                    <a href="#">도서</a>
+                    <ul>
+                        <li><a href="#">도서검색</a></li>
+                        <li><a href="#">추천도서</a></li>
+                        <li><a href="#">신규도서</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">게시판</a>
+                    <ul>
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="#">자유게시판</a></li>
+                        <li><a href="#">희망도서</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">내 서재</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-login">
+            <div class="login-inputs">
+                <input type="text" placeholder="아이디" id="loginId">
+                <input type="password" placeholder="비밀번호" id="loginPw">
+            </div>
+            <div class="login-buttons">
+                <button class="login" onclick="login()">로그인</button>
+                <button class="signup">회원가입</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 게시판 제목 -->
+        <h2 class="board-title">자유게시판</h2>
+
+        <!-- 검색창 -->
+        <div class="search-bar">
+            <select>
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+                <option value="writer">작성자</option>
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+        </div>
+
+        <!-- 게시판 -->
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="viewPost(1)">
+                    <td>1</td>
+                    <td>안녕하세요, 새로 가입했어요!</td>
+                    <td>홍길동</td>
+                    <td>2025-08-27</td>
+                    <td>42</td>
+                </tr>
+                <tr onclick="viewPost(2)">
+                    <td>2</td>
+                    <td>요즘 읽을만한 책 추천 부탁드립니다</td>
+                    <td>김철수</td>
+                    <td>2025-08-25</td>
+                    <td>58</td>
+                </tr>
+                <tr onclick="viewPost(3)">
+                    <td>3</td>
+                    <td>책 반납일 놓치면 어떻게 되나요?</td>
+                    <td>이영희</td>
+                    <td>2025-08-22</td>
+                    <td>73</td>
+                </tr>
+                <tr onclick="viewPost(4)">
+                    <td>4</td>
+                    <td>도서관 이벤트 참여 후기</td>
+                    <td>박민수</td>
+                    <td>2025-08-18</td>
+                    <td>36</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+                <tr onclick="viewPost(5)">
+                    <td>5</td>
+                    <td>전자책 서비스도 추가되면 좋겠어요</td>
+                    <td>최지현</td>
+                    <td>2025-08-15</td>
+                    <td>65</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- 글쓰기 버튼 -->
+        <div class="board-actions">
+            <button onclick="writePost()">글쓰기</button>
+        </div>
+
+            <div class="pagination">
+        <button class="page-btn" onclick="goPage(1)">◀</button>
+        <button class="page-btn active" onclick="goPage(1)">1</button>
+        <button class="page-btn" onclick="goPage(2)">2</button>
+        <button class="page-btn" onclick="goPage(3)">3</button>
+        <button class="page-btn" onclick="goPage(4)">4</button>
+        <button class="page-btn" onclick="goPage(5)">5</button>
+        <button class="page-btn" onclick="goPage(2)">▶</button>
+    </div>
+    </main>
+
+
+
+    <footer>
+        © 2025 도서 대출 서비스. All rights reserved.
+    </footer>
+
+    <script>
+        function viewPost(id) {
+            alert(id + "번 자유게시판 글 상세 페이지로 이동 (추후 구현)");
+        }
+
+        function writePost() {
+            alert("자유게시판 글쓰기 페이지로 이동 (추후 구현)");
+        }
+    </script>
+</body>
+
+</html>

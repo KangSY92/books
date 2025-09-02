@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>도서 검색</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-buttons button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .auth-buttons .signup {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .auth-buttons .login {
+      background-color: #2980b9;
+      color: white;
+    }
+
+    /* 검색창 */
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .search-bar select,
+    .search-bar input[type="text"] {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .search-bar input[type="text"] {
+      width: 600px;
+    }
+
+    .search-bar button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      background-color: #2980b9;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .search-bar button:hover {
+      background-color: #1f6391;
+    }
+
+    /* 도서 리스트 */
+    .book-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+    }
+
+    .book-item {
+      display: flex;
+      justify-content: space-between; /* 좌측(책정보) + 우측(수량+버튼) 배치 */
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+      transition: background 0.2s;
+      align-items: center;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .book-item:hover {
+      background-color: #f0f8ff;
+    }
+
+    .book-left {
+      display: flex;
+      gap: 50px; /* 이미지와 텍스트 간격 */
+      align-items: center;
+    }
+
+    .book-item img {
+      width: 140px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-left: 30px;
+    }
+
+    .book-info {
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .book-info strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    /* 수량 + 버튼 */
+    .book-actions {
+      text-align: center;
+      margin-right: 30px;
+    }
+
+    .book-actions .quantity {
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .book-actions button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .book-actions button:hover {
+      background-color: #1e8449;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 8px;
+    }
+
+    .page-btn {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .page-btn.active {
+      background: #2980b9;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">📚 도서 대출 서비스</div>
+  <nav>
+    <ul>
+      <li><a href="index.html">홈</a></li>
+      <li>
+        <a href="#">도서</a>
+        <ul>
+          <li><a href="#">도서검색</a></li>
+          <li><a href="#">추천도서</a></li>
+          <li><a href="#">신규도서</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">게시판</a>
+        <ul>
+          <li><a href="#">공지사항</a></li>
+          <li><a href="#">자유게시판</a></li>
+          <li><a href="#">희망도서</a></li>
+        </ul>
+      </li>
+      <li><a href="#">내 서재</a></li>
+    </ul>
+  </nav>
+
+  <!-- 2줄 로그인 영역 -->
+  <div class="header-login">
+    <div class="login-inputs">
+      <input type="text" placeholder="아이디" id="loginId">
+      <input type="password" placeholder="비밀번호" id="loginPw">
+    </div>
+    <div class="login-buttons">
+      <button class="login" onclick="login()">로그인</button>
+      <button class="signup">회원가입</button>
+    </div>
+  </div>
+</header>
+
+<main class="search-page">
+  <div class="search-bar">
+    <select>
+      <option value="title">제목</option>
+      <option value="author">저자</option>
+      <option value="publisher">출판사</option>
+    </select>
+    <input type="text" placeholder="검색어를 입력하세요">
+    <button>검색</button>
+  </div>
+
+  <div class="book-list">
+    <div class="book-item">
+      <div class="book-left">
+        <img src="https://shopping-phinf.pstatic.net/main_5118281/51182815714.20241105090357.jpg" alt="해리포터와 마법사의 돌">
+        <div class="book-info">
+          <strong>해리포터와 마법사의 돌</strong>
+          저자: J.K. 롤링<br>
+          출판사: 문학동네<br>
+          출판년도: 1997
+        </div>
+      </div>
+      <div class="book-actions">
+        <div class="quantity">수량: 3권</div>
+        <button>도서대출</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-left">
+        <img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점">
+        <div class="book-info">
+          <strong>불편한 편의점</strong>
+          저자: 김호연<br>
+          출판사: 나무옆의자<br>
+          출판년도: 2018
+        </div>
+      </div>
+      <div class="book-actions">
+        <div class="quantity">수량: 5권</div>
+        <button>도서대출</button>
+      </div>
+    </div>
+
+    <div class="book-item">
+      <div class="book-left">
+        <img src="https://shopping-phinf.pstatic.net/main_4077075/40770755621.20230801120536.jpg" alt="아몬드">
+        <div class="book-info">
+          <strong>아몬드</strong>
+          저자: 손원평<br>
+          출판사: 창비<br>
+          출판년도: 2017
+        </div>
+      </div>
+      <div class="book-actions">
+        <div class="quantity">수량: 2권</div>
+        <button>도서대출</button>
+      </div>
+    </div>
+  </div>
+
+    <div class="pagination">
+      <button class="page-btn" onclick="goPage(1)">◀</button>
+      <button class="page-btn active" onclick="goPage(1)">1</button>
+      <button class="page-btn" onclick="goPage(2)">2</button>
+      <button class="page-btn" onclick="goPage(3)">3</button>
+      <button class="page-btn" onclick="goPage(4)">4</button>
+      <button class="page-btn" onclick="goPage(5)">5</button>
+      <button class="page-btn" onclick="goPage(2)">▶</button>
+    </div>
+</main>
+
+<footer>
+  © 2025 도서 대출 서비스. All rights reserved.
+</footer>
+
+</body>
+</html>

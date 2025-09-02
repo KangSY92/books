@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>회원가입 - 도서 대출 서비스</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main.signup-page {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: #fff;
+    }
+
+    .signup-form-container {
+      width: 100%;
+      max-width: 600px;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: left;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .signup-form-container h2 {
+      margin-bottom: 30px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      font-size: 16px;
+      color: #2c3e50;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 25px;
+      margin-top: 15px;
+    }
+
+    .button-group button {
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      color: white;
+    }
+
+    .signup-btn {
+      flex: 2;
+      background-color: #27ae60;
+    }
+
+    .signup-btn:hover {
+      background-color: #1e8449;
+    }
+
+    .cancel-btn {
+      flex: 1;
+      background-color: #e74c3c;
+    }
+
+    .cancel-btn:hover {
+      background-color: #c0392b;
+    }
+
+    #addressDetail {
+  padding: 10px;
+  font-size: 14px;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">📚 도서 대출 서비스</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li>
+          <a href="#">도서</a>
+          <ul>
+            <li><a href="#">도서검색</a></li>
+            <li><a href="#">추천도서</a></li>
+            <li><a href="#">신규도서</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">게시판</a>
+          <ul>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">자유게시판</a></li>
+            <li><a href="#">희망도서</a></li>
+          </ul>
+        </li>
+        <li><a href="#">내 서재</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-login">
+      <div class="login-inputs">
+        <input type="text" placeholder="아이디" id="loginId">
+        <input type="password" placeholder="비밀번호" id="loginPw">
+      </div>
+      <div class="login-buttons">
+        <button class="login">로그인</button>
+        <button class="signup">회원가입</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="signup-page">
+    <div class="signup-form-container">
+      <h2>회원가입</h2>
+      <form class="signup-form">
+        <div class="form-group">
+          <label for="userid">아이디</label>
+          <input type="text" id="userid" name="userid" required>
+        </div>
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <label for="password2">비밀번호 확인</label>
+          <input type="password" id="password2" name="password2" required>
+        </div>
+        <div class="form-group">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">핸드폰 번호</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="address">주소</label>
+          <input type="text" id="address" name="address" placeholder="도로명/지번 입력" required>
+        </div>
+        <div class="form-group">
+          <label for="addressDetail">상세주소</label>
+          <input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소 입력" required>
+        </div>
+        <div class="button-group">
+          <button type="submit" class="signup-btn">회원가입</button>
+          <button type="button" class="cancel-btn" onclick="window.location.href='index.html'">취소</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 도서 대출 서비스. All rights reserved.
+  </footer>
+
+</body>
+</html>

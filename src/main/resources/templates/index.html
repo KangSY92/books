@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>도서 대출 메인페이지</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">📚 도서 대출 서비스</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li>
+          <a href="">도서</a>
+          <ul>
+            <li><a href="booksearch.html">도서검색</a></li>
+            <li><a href="recommend.html">추천도서</a></li>
+            <li><a href="newbook.html">신규도서</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">게시판</a>
+          <ul>
+            <li><a href="board_notice.html">공지사항</a></li>
+            <li><a href="board_free.html">자유게시판</a></li>
+            <li><a href="board_hopebook.html">희망도서</a></li>
+          </ul>
+        </li>
+        <li><a href="mybook.html">내 서재</a></li>
+      </ul>
+    </nav>
+
+        <!-- 2줄 로그인 영역 -->
+        <div class="header-login">
+            <div class="login-inputs">
+                <input type="text" placeholder="아이디" id="loginId">
+                <input type="password" placeholder="비밀번호" id="loginPw">
+            </div>
+            <div class="login-buttons">
+                <button class="login" onclick="login()">로그인</button>
+                <button class="signup">회원가입</button>
+            </div>
+        </div>
+        <div class="header-logout" style="display: none;">
+            <div class="login-inputs" style="visibility: hidden;">
+                <input type="text" placeholder="아이디" id="loginId">
+            </div>
+            <div class="auth-buttons">
+                <button class="logout">로그아웃</button>
+            </div>
+        </div>
+  </header>
+
+    <!-- 2줄 로그인 영역 -->
+    <!-- <div class="header-login">
+      <div class="login-inputs" style="display: none;">
+        <input type="text" placeholder="아이디" id="loginId">
+        <input type="password" placeholder="비밀번호" id="loginPw">
+      </div>
+      <div class="login-buttons" style="display: none;">
+        <button class="login" onclick="login()">로그인</button>
+        <button class="signup">회원가입</button>
+      </div>
+      <div class="auth-buttons" style="display: display;">
+        <button class="logout">로그아웃</button>
+      </div>
+    </div> -->
+  </header>
+
+  <main>
+    <!-- 추천 도서 -->
+    <h2 class="index-h2">추천 도서</h2>
+    <div class="book-grid">
+      <div class="book-card" onclick="goToBookPage(1)">
+        <img src="https://shopping-phinf.pstatic.net/main_5118281/51182815714.20241105090357.jpg" alt="해리포터와 마법사의 돌">
+        <div class="book-title">해리포터와 마법사의 돌</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(2)">
+        <img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점">
+        <div class="book-title">불편한 편의점</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(3)">
+        <img src="https://shopping-phinf.pstatic.net/main_4077075/40770755621.20230801120536.jpg" alt="아몬드">
+        <div class="book-title">아몬드</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(4)">
+        <img src="https://bookthumb-phinf.pstatic.net/cover/060/087/06008749.jpg" alt="데미안">
+        <div class="book-title">데미안</div>
+      </div>
+    </div>
+
+    <!-- 신규 도서 -->
+    <h2 class="index-h2">신규 도서</h2>
+    <div class="book-grid">
+      <div class="book-card" onclick="goToBookPage(5)">
+        <img src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230216071235.jpg" alt="세이노의 가르침">
+        <div class="book-title">세이노의 가르침</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(6)">
+        <img src="https://shopping-phinf.pstatic.net/main_4018811/40188117638.20230530082815.jpg" alt="역행자">
+        <div class="book-title">역행자</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(7)">
+        <img src="https://bookthumb-phinf.pstatic.net/cover/208/836/20883676.jpg" alt="작별하지 않는다">
+        <div class="book-title">작별하지 않는다</div>
+      </div>
+      <div class="book-card" onclick="goToBookPage(8)">
+        <img src="https://image.aladin.co.kr/product/758/33/cover500/8952759664_1.jpg" alt="인간 실격">
+        <div class="book-title">인간 실격</div>
+      </div>
+    </div>
+
+    <!-- 공지사항 -->
+    <section class="notice">
+      <h3>📢 공지사항</h3>
+      <ul>
+        <li><a href="#">8/26 시스템 점검 안내</a></li>
+        <li><a href="#">8/20 신규 도서 입고 알림</a></li>
+        <li><a href="#">8/10 여름 독서 이벤트 개최</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 도서 대출 서비스. All rights reserved.
+  </footer>
+
+  <script>
+    function login() {
+      const id = document.getElementById("loginId").value;
+      const pw = document.getElementById("loginPw").value;
+      alert("로그인 시도: " + id + " / " + pw + " (추후 구현)");
+    }
+  </script>
+
+</body>
+
+</html>

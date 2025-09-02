@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>자유게시판 글쓰기</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .post-title-label {
+        display: block;
+        text-align: left;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .post-title-input {
+
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-bottom: 25px;
+      box-sizing: border-box;
+    }
+
+    .post-content-textarea {
+      min-width: 750px;
+      max-width: 750px;
+      min-height: 300px;
+      max-height: 300px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      resize: none; /* 크기 조절 막기 */
+      font-size: 16px;
+      overflow-y: auto;
+    }
+
+    .post-attachment-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .post-attachment-input {
+      margin-bottom: 20px;
+    }
+
+    /* 버튼 영역 */
+    .post-actions {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .post-actions button {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* 색상 통일 */
+    .submit-btn {
+      background-color: #2980b9;
+    }
+
+    .cancel-btn {
+      background-color: #27ae60;
+    }
+
+    .post-actions button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">📚 도서 대출 서비스</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li>
+          <a href="#">도서</a>
+          <ul>
+            <li><a href="#">도서검색</a></li>
+            <li><a href="#">추천도서</a></li>
+            <li><a href="#">신규도서</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">게시판</a>
+          <ul>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">자유게시판</a></li>
+            <li><a href="#">희망도서</a></li>
+          </ul>
+        </li>
+        <li><a href="#">내 서재</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-login">
+      <div class="login-inputs">
+        <input type="text" placeholder="아이디" id="loginId">
+        <input type="password" placeholder="비밀번호" id="loginPw">
+      </div>
+      <div class="login-buttons">
+        <button class="login" onclick="login()">로그인</button>
+        <button class="signup">회원가입</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h2>게시글 작성</h2>
+
+    <!-- 제목 -->
+    <label class="post-title-label" for="postTitle">제목</label>
+    <input class="post-title-input" type="text" id="postTitle" placeholder="제목을 입력하세요">
+
+    <!-- 본문 -->
+    <label class="post-title-label" for="postContent">내용</label>
+    <textarea id="postContent" class="post-content-textarea" placeholder="내용을 입력하세요"></textarea>
+
+    <!-- 첨부파일 -->
+    <label class="post-attachment-label" for="postAttachment">첨부파일</label>
+    <input type="file" id="postAttachment" class="post-attachment-input">
+
+    <!-- 버튼 -->
+    <div class="post-actions">
+      <button class="submit-btn" onclick="submitPost()">등록</button>
+      <button class="cancel-btn" onclick="cancelPost()">취소</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 도서 대출 서비스. All rights reserved.
+  </footer>
+
+</body>
+
+</html>

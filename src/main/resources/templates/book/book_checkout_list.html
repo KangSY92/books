@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>도서 대출 많은 순</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* 페이지 전용 스타일 */
+        .loan-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+
+        .search-bar button {
+            padding: 8px 12px;
+            font-size: 14px;
+            border-radius: 4px;
+            border: none;
+            background-color: #2980b9;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            opacity: 0.9;
+        }
+
+        .loan-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .loan-table th,
+        .loan-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .loan-table th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .loan-table tr:hover {
+            background-color: #ecf0f1;
+        }
+
+        /* 컬럼 너비 조정 */
+        .loan-table th.rank-col,
+        .loan-table td.rank-col {
+            width: 60px;
+        }
+
+        .loan-table th.title-col,
+        .loan-table td.title-col {
+            width: 250px;
+            text-align: left;
+            padding-left: 10px;
+        }
+
+        .loan-table th.author-col,
+        .loan-table td.author-col {
+            width: 120px;
+        }
+
+        .loan-table th.publisher-col,
+        .loan-table td.publisher-col {
+            width: 150px;
+        }
+
+        .loan-table th.count-col,
+        .loan-table td.count-col {
+            width: 100px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .loan-table th.action-col,
+        .loan-table td.action-col {
+            width: 120px;
+        }
+
+        .action-btn {
+            padding: 4px 10px;
+            margin: 0 2px;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .detail-btn {
+            background-color: #2980b9;
+        }
+
+        .detail-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 상단바 -->
+    <header>
+        <div class="logo">📚 도서 대출 서비스</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li>
+                    <a href="#">도서</a>
+                    <ul>
+                        <li><a href="도서검색.html">도서검색</a></li>
+                        <li><a href="추천도서.html">추천도서</a></li>
+                        <li><a href="신규도서.html">신규도서</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">게시판</a>
+                    <ul>
+                        <li><a href="공지사항.html">공지사항</a></li>
+                        <li><a href="자유게시판.html">자유게시판</a></li>
+                        <li><a href="희망도서.html">희망도서</a></li>
+                    </ul>
+                </li>
+                <li><a href="내서재.html">내 서재</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-login">
+            <div class="login-inputs">
+                <input type="text" placeholder="아이디" id="loginId">
+                <input type="password" placeholder="비밀번호" id="loginPw">
+            </div>
+            <div class="login-buttons">
+                <button class="login">로그인</button>
+                <button class="signup">회원가입</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="loan_list">
+        <h1 class="loan-title">📊 도서 대출 많은 순</h1>
+
+        <div class="search-bar">
+            <input type="text" placeholder="도서 제목 또는 저자 검색">
+            <button>검색</button>
+        </div>
+
+        <table class="loan-table">
+            <thead>
+                <tr>
+                    <th class="rank-col">순위</th>
+                    <th class="title-col">도서명</th>
+                    <th class="author-col">저자</th>
+                    <th class="publisher-col">출판사</th>
+                    <th class="count-col">대출 횟수</th>
+                    <th class="action-col">관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="rank-col">1</td>
+                    <td class="title-col">해리포터와 마법사의 돌</td>
+                    <td class="author-col">J.K. 롤링</td>
+                    <td class="publisher-col">문학수첩</td>
+                    <td class="count-col">152</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">2</td>
+                    <td class="title-col">데미안</td>
+                    <td class="author-col">헤르만 헤세</td>
+                    <td class="publisher-col">민음사</td>
+                    <td class="count-col">133</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">3</td>
+                    <td class="title-col">작별인사</td>
+                    <td class="author-col">김영하</td>
+                    <td class="publisher-col">문학동네</td>
+                    <td class="count-col">120</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">4</td>
+                    <td class="title-col">1984</td>
+                    <td class="author-col">조지 오웰</td>
+                    <td class="publisher-col">민음사</td>
+                    <td class="count-col">112</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">5</td>
+                    <td class="title-col">채식주의자</td>
+                    <td class="author-col">한강</td>
+                    <td class="publisher-col">창비</td>
+                    <td class="count-col">105</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">6</td>
+                    <td class="title-col">어린왕자</td>
+                    <td class="author-col">생텍쥐페리</td>
+                    <td class="publisher-col">열린책들</td>
+                    <td class="count-col">99</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">7</td>
+                    <td class="title-col">삼국지</td>
+                    <td class="author-col">나관중</td>
+                    <td class="publisher-col">대한출판사</td>
+                    <td class="count-col">87</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">8</td>
+                    <td class="title-col">토지</td>
+                    <td class="author-col">박경리</td>
+                    <td class="publisher-col">마로니에북스</td>
+                    <td class="count-col">81</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">9</td>
+                    <td class="title-col">부의 인문학</td>
+                    <td class="author-col">브라운스톤</td>
+                    <td class="publisher-col">오픈마인드</td>
+                    <td class="count-col">75</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rank-col">10</td>
+                    <td class="title-col">미움받을 용기</td>
+                    <td class="author-col">기시미 이치로</td>
+                    <td class="publisher-col">인플루엔셜</td>
+                    <td class="count-col">70</td>
+                    <td class="action-col">
+                        <button class="action-btn detail-btn">관리</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        © 2025 도서 대출 서비스. All rights reserved.
+    </footer>
+</body>
+
+</html>

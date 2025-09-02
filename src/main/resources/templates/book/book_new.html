@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>신규 도서</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .auth-buttons button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .auth-buttons .signup {
+      background-color: #27ae60;
+      color: white;
+    }
+
+    .auth-buttons .login {
+      background-color: #2980b9;
+      color: white;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    /* 도서 리스트 */
+    .book-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      width: 100%;
+    }
+
+    .book-item {
+      display: flex;
+      justify-content: space-between; /* 좌측(책정보) + 우측(수량+버튼) 배치 */
+      padding: 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #fafafa;
+      transition: background 0.2s;
+      align-items: center;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    .book-item:hover {
+      background-color: #f0f8ff;
+    }
+
+    .book-left {
+      display: flex;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .book-item img {
+      width: 140px;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-left: 30px;
+    }
+
+    .book-info {
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .book-info strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    /* 수량 + 버튼 */
+    .book-actions {
+      text-align: center;
+      margin-right: 30px;
+    }
+
+    .book-actions .quantity {
+      font-size: 16px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    .book-actions button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #27ae60;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .book-actions button:hover {
+      background-color: #1e8449;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 8px;
+    }
+
+    .page-btn {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .page-btn.active {
+      background: #2980b9;
+      color: #fff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">📚 도서 대출 서비스</div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">홈</a></li>
+        <li>
+          <a href="#">도서</a>
+          <ul>
+            <li><a href="#">도서검색</a></li>
+            <li><a href="#">추천도서</a></li>
+            <li><a href="#">신규도서</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">게시판</a>
+          <ul>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">자유게시판</a></li>
+            <li><a href="#">희망도서</a></li>
+          </ul>
+        </li>
+        <li><a href="#">내 서재</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-login">
+      <div class="login-inputs">
+        <input type="text" placeholder="아이디" id="loginId">
+        <input type="password" placeholder="비밀번호" id="loginPw">
+      </div>
+      <div class="login-buttons">
+        <button class="login" onclick="login()">로그인</button>
+        <button class="signup">회원가입</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="search-page">
+    <h1>신규 도서</h1>
+
+    <div class="book-list">
+      <div class="book-item">
+        <div class="book-left">
+          <img src="https://shopping-phinf.pstatic.net/main_3731353/37313533623.20230216071235.jpg" alt="세이노의 가르침">
+          <div class="book-info">
+            <strong>세이노의 가르침</strong>
+            저자: 세이노<br>
+            출판사: 웅진지식하우스<br>
+            출판년도: 2023
+          </div>
+        </div>
+        <div class="book-actions">
+          <div class="quantity">수량: 3권</div>
+          <button>도서대출</button>
+        </div>
+      </div>
+
+      <div class="book-item">
+        <div class="book-left">
+          <img src="https://shopping-phinf.pstatic.net/main_4018811/40188117638.20230530082815.jpg" alt="역행자">
+          <div class="book-info">
+            <strong>역행자</strong>
+            저자: 천명관<br>
+            출판사: 블루홀<br>
+            출판년도: 2023
+          </div>
+        </div>
+        <div class="book-actions">
+          <div class="quantity">수량: 5권</div>
+          <button>도서대출</button>
+        </div>
+      </div>
+
+      <div class="book-item">
+        <div class="book-left">
+          <img src="https://bookthumb-phinf.pstatic.net/cover/208/836/20883676.jpg" alt="작별하지 않는다">
+          <div class="book-info">
+            <strong>작별하지 않는다</strong>
+            저자: 김연수<br>
+            출판사: 문학동네<br>
+            출판년도: 2022
+          </div>
+        </div>
+        <div class="book-actions">
+          <div class="quantity">수량: 2권</div>
+          <button>도서대출</button>
+        </div>
+      </div>
+
+      <div class="book-item">
+        <div class="book-left">
+          <img src="https://image.aladin.co.kr/product/758/33/cover500/8952759664_1.jpg" alt="인간 실격">
+          <div class="book-info">
+            <strong>인간 실격</strong>
+            저자: 다자이 오사무<br>
+            출판사: 민음사<br>
+            출판년도: 1948
+          </div>
+        </div>
+        <div class="book-actions">
+          <div class="quantity">수량: 1권</div>
+          <button>도서대출</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button class="page-btn" onclick="goPage(1)">◀</button>
+      <button class="page-btn active" onclick="goPage(1)">1</button>
+      <button class="page-btn" onclick="goPage(2)">2</button>
+      <button class="page-btn" onclick="goPage(3)">3</button>
+      <button class="page-btn" onclick="goPage(4)">4</button>
+      <button class="page-btn" onclick="goPage(5)">5</button>
+      <button class="page-btn" onclick="goPage(2)">▶</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 도서 대출 서비스. All rights reserved.
+  </footer>
+
+</body>
+</html>
