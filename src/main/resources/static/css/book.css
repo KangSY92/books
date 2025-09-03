@@ -1,0 +1,452 @@
+/* 검색창 */
+.book-search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.book-search-bar select,
+.book-search-bar input[type="text"] {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.book-search-bar input[type="text"] {
+  width: 600px;
+}
+
+.book-search-bar button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background-color: #2980b9;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.book-search-bar button:hover {
+  background-color: #1f6391;
+}
+
+.book-title {
+  font-size: 24px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* 도서 리스트 */
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 100%;
+}
+
+.book-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: background 0.2s;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.book-item:hover {
+  background-color: #f0f8ff;
+}
+
+.book-left {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.book-item img {
+  width: 140px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-left: 30px;
+}
+
+.book-info {
+  line-height: 1.6;
+  text-align: left;
+}
+
+.book-info strong {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+/* 수량 + 버튼 */
+.book-actions {
+  text-align: center;
+  margin-right: 30px;
+}
+
+.book-actions .quantity {
+  font-size: 16px;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.book-actions button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: #27ae60;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.book-actions button:hover {
+  background-color: #1e8449;
+}
+
+.book-actions button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
+/* 관리자용 도서 대출 목록 */
+  /* 페이지 전용 스타일 */
+  .loan-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .booklist-search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .booklist-search-bar input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 300px;
+  }
+
+  .booklist-search-bar button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    background-color: #2980b9;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .booklist-search-bar button:hover {
+    opacity: 0.9;
+  }
+
+  .loan-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .loan-table th,
+  .loan-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .loan-table th {
+    background-color: #2c3e50;
+    color: white;
+  }
+
+  .loan-table tr:hover {
+    background-color: #ecf0f1;
+  }
+
+  /* 컬럼 너비 조정 */
+  .loan-table th.rank-col,
+  .loan-table td.rank-col {
+    width: 60px;
+  }
+
+  .loan-table th.title-col,
+  .loan-table td.title-col {
+    width: 250px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  .loan-table th.author-col,
+  .loan-table td.author-col {
+    width: 120px;
+  }
+
+  .loan-table th.publisher-col,
+  .loan-table td.publisher-col {
+    width: 150px;
+  }
+
+  .loan-table th.count-col,
+  .loan-table td.count-col {
+    width: 100px;
+    font-weight: bold;
+    color: #27ae60;
+  }
+
+  .loan-table th.action-col,
+  .loan-table td.action-col {
+    width: 120px;
+  }
+
+  .action-btn {
+    padding: 4px 10px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .detail-btn {
+    background-color: #2980b9;
+  }
+
+  .detail-btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* book_add*/
+  /* 메인 타이틀 */
+  .book_add-title {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 26px;
+  }
+
+  /* 도서 등록 폼 */
+  .book_add-form {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .book_add-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+  }
+
+  .book_add-label {
+      font-weight: bold;
+      margin-bottom: 8px;
+  }
+
+  .book_add-input[type="text"],
+  .book_add-input[type="number"],
+  .book_add-input[type="file"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+  }
+
+  .book_add-preview {
+      max-width: 150px;
+      max-height: 200px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+  }
+
+  .book_add-actions {
+      text-align: right;
+      margin-top: 20px;
+  }
+
+  .book_add-button {
+      padding: 10px 18px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      color: white;
+  }
+
+  .book_add-save {
+      background-color: #27ae60; /* 회원가입 버튼 색상 */
+  }
+
+  .book_add-reset {
+      background-color: #2980b9; /* 로그인 버튼 색상 */
+  }
+
+  .book_add-save:hover,
+  .book_add-reset:hover {
+      opacity: 0.9;
+  }
+  
+/* book_update*/
+/* 메인 타이틀 */
+.book_edit-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+/* 도서 수정 폼 */
+.book_edit-form {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.book_edit-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.book_edit-label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.book_edit-input[type="text"],
+.book_edit-input[type="number"],
+.book_edit-input[type="file"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.book_edit-preview {
+  max-width: 150px;
+  max-height: 200px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.book_edit-actions {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.book_edit-button {
+  padding: 10px 18px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  color: white;
+}
+
+.book_edit-save {
+  background-color: #27ae60;
+  /* 저장 버튼 */
+}
+
+.book_edit-cancel {
+  background-color: #2980b9;
+  /* 취소 버튼 */
+}
+
+.book_edit-delete {
+  background-color: #c0392b;
+  /* 삭제 버튼 */
+}
+
+.book_edit-save:hover,
+.book_edit-cancel:hover,
+.book_edit-delete:hover {
+  opacity: 0.9;
+}
+
+/* mybook */
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  margin: 30px 0;
+  color: #2c3e50;
+}
+
+/* 책 테이블 */
+.book-table {
+  width: 90%;
+  margin: 0 auto 50px auto;
+  border-collapse: collapse;
+  background: #fafafa;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.book-table th,
+.book-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.book-table th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+}
+
+.book-table tr:hover {
+  background-color: #ecf0f1;
+}
+
+.book-table img {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.status-borrowed {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.status-returned {
+  color: #27ae60;
+  font-weight: bold;
+}

@@ -1,0 +1,198 @@
+main.signup-page {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: #fff;
+  }
+
+  .signup-form-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .signup-form-container h2 {
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+  }
+
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-weight: 500;
+    font-size: 16px;
+    color: #2c3e50;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  /* 이메일+인증 버튼 스타일 */
+  .email-verification-group {
+    display: flex;
+    gap: 10px;
+  }
+
+  .email-verification-group input {
+    flex: 2;
+  }
+
+  .email-verification-group button {
+    width: 15%;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .email-verification-group button:hover {
+    background-color: #2980b9;
+  }
+
+  /* 숨겨진 인증번호 인풋 */
+  #emailCodeGroup {
+    display: none;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+  }
+
+  .button-group button {
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: white;
+  }
+
+  .signup-btn {
+    flex: 2;
+    background-color: #27ae60;
+  }
+
+  .signup-btn:hover {
+    background-color: #1e8449;
+  }
+
+  .cancel-btn {
+    flex: 1;
+    background-color: #e74c3c;
+  }
+
+  .cancel-btn:hover {
+    background-color: #c0392b;
+  }
+
+  #addressDetail {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+/* memeber_list */
+
+.member-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.member-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.member-table th,
+.member-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.member-table th {
+  background-color: #2c3e50;
+  color: white;
+}
+
+.member-table tr:hover {
+  background-color: #ecf0f1;
+}
+
+/* 컬럼 너비 조정 */
+.member-table th.id-col,
+.member-table td.id-col {
+  width: 60px;
+}
+
+.member-table th.name-col,
+.member-table td.name-col {
+  width: 100px;
+}
+
+.member-table th.phone-col,
+.member-table td.phone-col {
+  width: 120px;
+}
+
+.member-table th.address-col,
+.member-table td.address-col {
+  width: 250px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.member-table th.created-col,
+.member-table td.created-col,
+.member-table th.deleted-col,
+.member-table td.deleted-col {
+  width: 120px;
+}
+
+.member-table th.action-col,
+.member-table td.action-col {
+  width: 100px;
+}
+
+.member-edit-btn {
+  background-color: #2980b9;
+}
+
+.member-delete-btn {
+  background-color: #c0392b;
+}
+
+.member-edit-btn:hover,
+.member-delete-btn:hover {
+  opacity: 0.9;
+}

@@ -4,83 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>도서 등록</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* 메인 타이틀 */
-        .book_add-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 26px;
-        }
-
-        /* 도서 등록 폼 */
-        .book_add-form {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .book_add-group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .book_add-label {
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-
-        .book_add-input[type="text"],
-        .book_add-input[type="number"],
-        .book_add-input[type="file"] {
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .book_add-preview {
-            max-width: 150px;
-            max-height: 200px;
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .book_add-actions {
-            text-align: right;
-            margin-top: 20px;
-        }
-
-        .book_add-button {
-            padding: 10px 18px;
-            margin-left: 10px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-            color: white;
-        }
-
-        .book_add-save {
-            background-color: #27ae60; /* 회원가입 버튼 색상 */
-        }
-
-        .book_add-reset {
-            background-color: #2980b9; /* 로그인 버튼 색상 */
-        }
-
-        .book_add-save:hover,
-        .book_add-reset:hover {
-            opacity: 0.9;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/book.css">
 </head>
 
 <body>
@@ -172,33 +97,6 @@
         © 2025 도서 대출 서비스. All rights reserved.
     </footer>
 
-    <script>
-        const bookImage = document.getElementById('bookImage');
-        const preview = document.getElementById('preview');
-
-        bookImage.addEventListener('change', function (e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    preview.src = event.target.result;
-                }
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = 'https://via.placeholder.com/150x200?text=이미지+없음';
-            }
-        });
-
-        function resetForm() {
-            document.getElementById('bookForm').reset();
-            preview.src = 'https://via.placeholder.com/150x200?text=이미지+없음';
-        }
-
-        document.getElementById('bookForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('도서가 등록되었습니다 (추후 서버 구현)');
-        });
-    </script>
 </body>
 
 </html>

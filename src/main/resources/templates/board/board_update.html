@@ -4,86 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>자유게시판 글 수정</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        main {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .edit-title {
-            width: 100%;
-            font-size: 26px;
-            font-weight: bold;
-            padding: 10px;
-            margin-bottom: 25px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .edit-content {
-            width: 100%;
-            min-width: 750px;
-            max-width: 750px;
-            min-height: 300px;
-            max-height: 300px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            line-height: 1.6;
-            box-sizing: border-box;
-            resize: vertical;
-        }
-
-        .post-attachment {
-            margin-bottom: 20px;
-        }
-
-        .post-attachment a {
-            color: #2980b9;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .post-attachment input {
-            display: block;
-            margin-top: 5px;
-        }
-
-        .post-actions {
-            text-align: right;
-            margin-top: 18%;
-        }
-
-        .post-actions button {
-            padding: 8px 16px;
-            margin-left: 10px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-            color: white;
-        }
-
-        .save-btn {
-            background-color: #2980b9;
-        }
-
-        .cancel-btn {
-            background-color: #27ae60;
-        }
-
-        .save-btn:hover,
-        .cancel-btn:hover {
-            opacity: 0.9;
-        }
-    </style>
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/board.css">
+	<link rel="stylesheet" href="/css/book.css">
 </head>
 
 <body>
@@ -125,7 +48,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="board-main">
         <input type="text" class="edit-title" value="게시글 제목 예시">
 
         <textarea class="edit-content">본문 내용이 여기에 표시됩니다. 필요한 내용을 수정하세요.</textarea>

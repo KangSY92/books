@@ -4,125 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>회원 관리</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* 회원관리 전용 스타일 */
-        .member-title {
-            text-align: center;
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/member.css">
+    <link rel="stylesheet" href="/css/board.css">
+    <link rel="stylesheet" href="/css/book.css">
 
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .search-bar input[type="text"] {
-            padding: 8px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            width: 300px;
-        }
-
-        .search-bar button {
-            padding: 8px 12px;
-            font-size: 14px;
-            border-radius: 4px;
-            border: none;
-            background-color: #2980b9;
-            color: white;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .search-bar button:hover {
-            opacity: 0.9;
-        }
-
-        .member-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .member-table th,
-        .member-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        .member-table th {
-            background-color: #2c3e50;
-            color: white;
-        }
-
-        .member-table tr:hover {
-            background-color: #ecf0f1;
-        }
-
-        /* 컬럼 너비 조정 */
-        .member-table th.id-col,
-        .member-table td.id-col {
-            width: 60px;
-        }
-
-        .member-table th.name-col,
-        .member-table td.name-col {
-            width: 100px;
-        }
-
-        .member-table th.phone-col,
-        .member-table td.phone-col {
-            width: 120px;
-        }
-
-        .member-table th.address-col,
-        .member-table td.address-col {
-            width: 250px;
-            text-align: left;
-            padding-left: 10px;
-        }
-
-        .member-table th.created-col,
-        .member-table td.created-col,
-        .member-table th.deleted-col,
-        .member-table td.deleted-col {
-            width: 120px;
-        }
-
-        .member-table th.action-col,
-        .member-table td.action-col {
-            width: 100px;
-        }
-
-        .action-btn {
-            padding: 4px 10px;
-            margin: 0 2px;
-            border: none;
-            border-radius: 4px;
-            color: white;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .edit-btn {
-            background-color: #2980b9;
-        }
-
-        .delete-btn {
-            background-color: #c0392b;
-        }
-
-        .edit-btn:hover,
-        .delete-btn:hover {
-            opacity: 0.9;
-        }
-    </style>
 </head>
 
 <body>
@@ -166,7 +52,7 @@
     <main class="member_list">
         <h1 class="member-title">회원 관리</h1>
 
-        <div class="search-bar">
+        <div class="booklist-search-bar">
             <input type="text" placeholder="회원 이름 또는 ID 검색">
             <button onclick="searchMember()">검색</button>
         </div>
@@ -192,8 +78,8 @@
                     <td class="created-col">2025-01-10</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(1)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(1)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(1)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(1)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -204,8 +90,8 @@
                     <td class="created-col">2025-03-15</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(2)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(2)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(2)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(2)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -216,8 +102,8 @@
                     <td class="created-col">2025-04-01</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(3)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(3)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(3)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(3)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -228,8 +114,8 @@
                     <td class="created-col">2025-05-12</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(4)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(4)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(4)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(4)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -240,8 +126,8 @@
                     <td class="created-col">2025-06-20</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(5)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(5)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(5)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(5)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -252,8 +138,8 @@
                     <td class="created-col">2025-07-05</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(6)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(6)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(6)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(6)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -264,8 +150,8 @@
                     <td class="created-col">2025-07-25</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(7)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(7)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(7)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(7)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -276,8 +162,8 @@
                     <td class="created-col">2025-08-01</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(8)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(8)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(8)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(8)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -288,8 +174,8 @@
                     <td class="created-col">2025-08-15</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(9)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(9)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(9)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(9)">삭제</button>
                     </td>
                 </tr>
                 <tr>
@@ -300,8 +186,8 @@
                     <td class="created-col">2025-08-20</td>
                     <td class="deleted-col">-</td>
                     <td class="action-col">
-                        <button class="action-btn edit-btn" onclick="editMember(10)">수정</button>
-                        <button class="action-btn delete-btn" onclick="deleteMember(10)">삭제</button>
+                        <button class="action-btn member-edit-btn" onclick="editMember(10)">수정</button>
+                        <button class="action-btn member-delete-btn" onclick="deleteMember(10)">삭제</button>
                     </td>
                 </tr>
             </tbody>
@@ -311,20 +197,6 @@
     <footer>
         © 2025 도서 대출 서비스. All rights reserved.
     </footer>
-
-    <script>
-        function searchMember() {
-            alert("회원 검색 기능 (추후 구현)");
-        }
-
-        function editMember(id) {
-            alert(id + "번 회원 수정 페이지로 이동 (추후 구현)");
-        }
-
-        function deleteMember(id) {
-            alert(id + "번 회원 삭제 처리 (추후 구현)");
-        }
-    </script>
 </body>
 
 </html>
