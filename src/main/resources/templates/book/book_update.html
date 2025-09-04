@@ -1,104 +1,61 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
-    <meta charset="UTF-8">
-    <title>도서 수정</title>
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/book.css">
-</head>
+<head th:insert="~{fragments/common/head :: head}">
 
 <body>
-    <!-- 상단바: 도서 등록 페이지와 동일 -->
-    <header>
-        <div class="logo">📚 도서 대출 서비스</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">홈</a></li>
-                <li>
-                    <a href="#">도서</a>
-                    <ul>
-                        <li><a href="도서검색.html">도서검색</a></li>
-                        <li><a href="추천도서.html">추천도서</a></li>
-                        <li><a href="신규도서.html">신규도서</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">게시판</a>
-                    <ul>
-                        <li><a href="공지사항.html">공지사항</a></li>
-                        <li><a href="자유게시판.html">자유게시판</a></li>
-                        <li><a href="희망도서.html">희망도서</a></li>
-                    </ul>
-                </li>
-                <li><a href="내서재.html">내 서재</a></li>
-            </ul>
-        </nav>
 
-        <div class="header-login">
-            <div class="login-inputs">
-                <input type="text" placeholder="아이디" id="loginId">
-                <input type="password" placeholder="비밀번호" id="loginPw">
-            </div>
-            <div class="login-buttons">
-                <button class="login">로그인</button>
-                <button class="signup">회원가입</button>
-            </div>
-        </div>
-    </header>
+	<header th:insert="~{fragments/common/header :: header}"></header>
 
-    <main>
-        <h1 class="book_edit-title">도서 수정</h1>
-        <form class="book_edit-form">
-            <div class="book_edit-group">
-                <label for="bookImage" class="book_edit-label">책 이미지</label>
-                <input type="file" id="bookImage" class="book_edit-input" accept="image/*">
-                <img class="book_edit-preview"
-                    src="https://via.placeholder.com/150x200?text=기존+책이미지"
-                    alt="책 이미지 미리보기">
-            </div>
+	<main>
+		<h1 class="book_edit-title">도서 수정</h1>
+		<form class="book_edit-form">
+			<div class="book_edit-group">
+				<label for="bookImage" class="book_edit-label">책 이미지</label>
+				<input type="file" id="bookImage" class="book_edit-input" accept="image/*">
+				<img class="book_edit-preview" src="https://via.placeholder.com/150x200?text=기존+책이미지" alt="책 이미지 미리보기">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="title" class="book_edit-label">제목</label>
-                <input type="text" id="title" class="book_edit-input" value="예시 도서 제목">
-            </div>
+			<div class="book_edit-group">
+				<label for="title" class="book_edit-label">제목</label>
+				<input type="text" id="title" class="book_edit-input" value="예시 도서 제목">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="author" class="book_edit-label">저자</label>
-                <input type="text" id="author" class="book_edit-input" value="홍길동">
-            </div>
+			<div class="book_edit-group">
+				<label for="author" class="book_edit-label">저자</label>
+				<input type="text" id="author" class="book_edit-input" value="홍길동">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="publisher" class="book_edit-label">출판사</label>
-                <input type="text" id="publisher" class="book_edit-input" value="길벗출판사">
-            </div>
+			<div class="book_edit-group">
+				<label for="publisher" class="book_edit-label">출판사</label>
+				<input type="text" id="publisher" class="book_edit-input" value="길벗출판사">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="year" class="book_edit-label">출판 연도</label>
-                <input type="number" id="year" class="book_edit-input" value="2024">
-            </div>
+			<div class="book_edit-group">
+				<label for="year" class="book_edit-label">출판 연도</label>
+				<input type="number" id="year" class="book_edit-input" value="2024">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="quantity" class="book_edit-label">수량</label>
-                <input type="number" id="quantity" class="book_edit-input" value="10">
-            </div>
+			<div class="book_edit-group">
+				<label for="quantity" class="book_edit-label">수량</label>
+				<input type="number" id="quantity" class="book_edit-input" value="10">
+			</div>
 
-            <div class="book_edit-group">
-                <label for="callNumber" class="book_edit-label">청구번호</label>
-                <input type="text" id="callNumber" class="book_edit-input" value="KOR-00123">
-            </div>
+			<div class="book_edit-group">
+				<label for="callNumber" class="book_edit-label">청구번호</label>
+				<input type="text" id="callNumber" class="book_edit-input" value="KOR-00123">
+			</div>
 
-            <div class="book_edit-actions">
-                <button type="submit" class="book_edit-button book_edit-save">저장</button>
-                <button type="button" class="book_edit-button book_edit-cancel">취소</button>
-                <button type="button" class="book_edit-button book_edit-delete">삭제</button>
-            </div>
-        </form>
-    </main>
+			<div class="book_edit-actions">
+				<button type="submit" class="book_edit-button book_edit-save">저장</button>
+				<button type="button" class="book_edit-button book_edit-cancel">취소</button>
+				<button type="button" class="book_edit-button book_edit-delete">삭제</button>
+			</div>
+		</form>
+	</main>
 
-    <footer>
-        © 2025 도서 대출 서비스. All rights reserved.
-    </footer>
+	<footer th:insert="~{fragments/common/footer :: footer}"></footer>
+
 </body>
 
 </html>

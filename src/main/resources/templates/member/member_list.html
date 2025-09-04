@@ -1,202 +1,159 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
-    <meta charset="UTF-8">
-    <title>회원 관리</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/member.css">
-    <link rel="stylesheet" href="/css/board.css">
-    <link rel="stylesheet" href="/css/book.css">
-
-</head>
+<head th:insert="~{fragments/common/head :: head}">
 
 <body>
-    <header>
-        <div class="logo">📚 도서 대출 서비스</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">홈</a></li>
-                <li>
-                    <a href="#">도서</a>
-                    <ul>
-                        <li><a href="도서검색.html">도서검색</a></li>
-                        <li><a href="추천도서.html">추천도서</a></li>
-                        <li><a href="신규도서.html">신규도서</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">게시판</a>
-                    <ul>
-                        <li><a href="공지사항.html">공지사항</a></li>
-                        <li><a href="자유게시판.html">자유게시판</a></li>
-                        <li><a href="희망도서.html">희망도서</a></li>
-                    </ul>
-                </li>
-                <li><a href="내서재.html">내 서재</a></li>
-            </ul>
-        </nav>
 
-        <div class="header-login">
-            <div class="login-inputs">
-                <input type="text" placeholder="아이디" id="loginId">
-                <input type="password" placeholder="비밀번호" id="loginPw">
-            </div>
-            <div class="login-buttons">
-                <button class="login" onclick="login()">로그인</button>
-                <button class="signup">회원가입</button>
-            </div>
-        </div>
-    </header>
+	<header th:insert="~{fragments/common/header :: header}"></header>
 
-    <main class="member_list">
-        <h1 class="member-title">회원 관리</h1>
+	<main class="member_list">
+		<h1 class="member-title">회원 관리</h1>
 
-        <div class="booklist-search-bar">
-            <input type="text" placeholder="회원 이름 또는 ID 검색">
-            <button onclick="searchMember()">검색</button>
-        </div>
+		<div class="booklist-search-bar">
+			<input type="text" placeholder="회원 이름 또는 ID 검색">
+			<button onclick="searchMember()">검색</button>
+		</div>
 
-        <table class="member-table">
-            <thead>
-                <tr>
-                    <th class="id-col">ID</th>
-                    <th class="name-col">이름</th>
-                    <th class="phone-col">핸드폰번호</th>
-                    <th class="address-col">주소</th>
-                    <th class="created-col">생성일</th>
-                    <th class="deleted-col">삭제일</th>
-                    <th class="action-col">관리</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="id-col">1</td>
-                    <td class="name-col">홍길동</td>
-                    <td class="phone-col">010-1234-5678</td>
-                    <td class="address-col">서울시 강남구 테헤란로 123</td>
-                    <td class="created-col">2025-01-10</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(1)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(1)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">2</td>
-                    <td class="name-col">김철수</td>
-                    <td class="phone-col">010-8765-4321</td>
-                    <td class="address-col">부산시 해운대구 우동 456</td>
-                    <td class="created-col">2025-03-15</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(2)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(2)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">3</td>
-                    <td class="name-col">이영희</td>
-                    <td class="phone-col">010-2345-6789</td>
-                    <td class="address-col">인천시 연수구 송도동 789</td>
-                    <td class="created-col">2025-04-01</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(3)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(3)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">4</td>
-                    <td class="name-col">박민수</td>
-                    <td class="phone-col">010-3456-7890</td>
-                    <td class="address-col">대전시 유성구 원신흥동 321</td>
-                    <td class="created-col">2025-05-12</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(4)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(4)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">5</td>
-                    <td class="name-col">최지현</td>
-                    <td class="phone-col">010-4567-8901</td>
-                    <td class="address-col">광주시 서구 상무동 654</td>
-                    <td class="created-col">2025-06-20</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(5)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(5)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">6</td>
-                    <td class="name-col">강석영</td>
-                    <td class="phone-col">010-5678-9012</td>
-                    <td class="address-col">서울시 송파구 잠실동 987</td>
-                    <td class="created-col">2025-07-05</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(6)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(6)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">7</td>
-                    <td class="name-col">윤지우</td>
-                    <td class="phone-col">010-6789-0123</td>
-                    <td class="address-col">부산시 남구 문현동 321</td>
-                    <td class="created-col">2025-07-25</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(7)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(7)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">8</td>
-                    <td class="name-col">김민준</td>
-                    <td class="phone-col">010-7890-1234</td>
-                    <td class="address-col">대구시 중구 동성로 456</td>
-                    <td class="created-col">2025-08-01</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(8)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(8)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">9</td>
-                    <td class="name-col">서현우</td>
-                    <td class="phone-col">010-8901-2345</td>
-                    <td class="address-col">울산시 남구 삼산동 789</td>
-                    <td class="created-col">2025-08-15</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(9)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(9)">삭제</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="id-col">10</td>
-                    <td class="name-col">조민서</td>
-                    <td class="phone-col">010-9012-3456</td>
-                    <td class="address-col">경기도 성남시 분당구 정자동 123</td>
-                    <td class="created-col">2025-08-20</td>
-                    <td class="deleted-col">-</td>
-                    <td class="action-col">
-                        <button class="action-btn member-edit-btn" onclick="editMember(10)">수정</button>
-                        <button class="action-btn member-delete-btn" onclick="deleteMember(10)">삭제</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </main>
+		<table class="member-table">
+			<thead>
+				<tr>
+					<th class="id-col">ID</th>
+					<th class="name-col">이름</th>
+					<th class="phone-col">핸드폰번호</th>
+					<th class="address-col">주소</th>
+					<th class="created-col">생성일</th>
+					<th class="deleted-col">삭제일</th>
+					<th class="action-col">관리</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="id-col">1</td>
+					<td class="name-col">홍길동</td>
+					<td class="phone-col">010-1234-5678</td>
+					<td class="address-col">서울시 강남구 테헤란로 123</td>
+					<td class="created-col">2025-01-10</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(1)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(1)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">2</td>
+					<td class="name-col">김철수</td>
+					<td class="phone-col">010-8765-4321</td>
+					<td class="address-col">부산시 해운대구 우동 456</td>
+					<td class="created-col">2025-03-15</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(2)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(2)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">3</td>
+					<td class="name-col">이영희</td>
+					<td class="phone-col">010-2345-6789</td>
+					<td class="address-col">인천시 연수구 송도동 789</td>
+					<td class="created-col">2025-04-01</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(3)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(3)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">4</td>
+					<td class="name-col">박민수</td>
+					<td class="phone-col">010-3456-7890</td>
+					<td class="address-col">대전시 유성구 원신흥동 321</td>
+					<td class="created-col">2025-05-12</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(4)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(4)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">5</td>
+					<td class="name-col">최지현</td>
+					<td class="phone-col">010-4567-8901</td>
+					<td class="address-col">광주시 서구 상무동 654</td>
+					<td class="created-col">2025-06-20</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(5)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(5)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">6</td>
+					<td class="name-col">강석영</td>
+					<td class="phone-col">010-5678-9012</td>
+					<td class="address-col">서울시 송파구 잠실동 987</td>
+					<td class="created-col">2025-07-05</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(6)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(6)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">7</td>
+					<td class="name-col">윤지우</td>
+					<td class="phone-col">010-6789-0123</td>
+					<td class="address-col">부산시 남구 문현동 321</td>
+					<td class="created-col">2025-07-25</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(7)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(7)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">8</td>
+					<td class="name-col">김민준</td>
+					<td class="phone-col">010-7890-1234</td>
+					<td class="address-col">대구시 중구 동성로 456</td>
+					<td class="created-col">2025-08-01</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(8)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(8)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">9</td>
+					<td class="name-col">서현우</td>
+					<td class="phone-col">010-8901-2345</td>
+					<td class="address-col">울산시 남구 삼산동 789</td>
+					<td class="created-col">2025-08-15</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(9)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(9)">삭제</button>
+					</td>
+				</tr>
+				<tr>
+					<td class="id-col">10</td>
+					<td class="name-col">조민서</td>
+					<td class="phone-col">010-9012-3456</td>
+					<td class="address-col">경기도 성남시 분당구 정자동 123</td>
+					<td class="created-col">2025-08-20</td>
+					<td class="deleted-col">-</td>
+					<td class="action-col">
+						<button class="action-btn member-edit-btn" onclick="editMember(10)">수정</button>
+						<button class="action-btn member-delete-btn" onclick="deleteMember(10)">삭제</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</main>
 
-    <footer>
-        © 2025 도서 대출 서비스. All rights reserved.
-    </footer>
+	<footer th:insert="~{fragments/common/footer :: footer}"></footer>
+
 </body>
 
 </html>

@@ -1,52 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
-    <meta charset="UTF-8">
-    <title>자유게시판 글 수정</title>
-	<link rel="stylesheet" href="/css/style.css">
-	<link rel="stylesheet" href="/css/board.css">
-	<link rel="stylesheet" href="/css/book.css">
-</head>
+<head th:insert="~{fragments/common/head :: head}">
 
 <body>
 
-    <header>
-        <div class="logo">📚 도서 대출 서비스</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">홈</a></li>
-                <li>
-                    <a href="#">도서</a>
-                    <ul>
-                        <li><a href="#">도서검색</a></li>
-                        <li><a href="#">추천도서</a></li>
-                        <li><a href="#">신규도서</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">게시판</a>
-                    <ul>
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">자유게시판</a></li>
-                        <li><a href="#">희망도서</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">내 서재</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-login">
-            <div class="login-inputs">
-                <input type="text" placeholder="아이디" id="loginId">
-                <input type="password" placeholder="비밀번호" id="loginPw">
-            </div>
-            <div class="login-buttons">
-                <button class="login" onclick="login()">로그인</button>
-                <button class="signup">회원가입</button>
-            </div>
-        </div>
-    </header>
+	<header th:insert="~{fragments/common/header :: header}"></header>
 
     <main class="board-main">
         <input type="text" class="edit-title" value="게시글 제목 예시">
@@ -63,10 +22,8 @@
             <button class="cancel-btn" onclick="cancelEdit()">취소</button>
         </div>
     </main>
-
-    <footer>
-        © 2025 도서 대출 서비스. All rights reserved.
-    </footer>
+	
+	<footer th:insert="~{fragments/common/footer :: footer}"></footer>
 
 </body>
 

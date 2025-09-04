@@ -1,0 +1,61 @@
+<th:block th:fragment="header">
+    <div class="logo">📚 도서 대출 서비스</div>
+
+    <nav>
+      <ul>
+        <li><a href="/">홈</a></li>
+        <li>
+          <a href="">도서</a>
+          <ul>
+            <li><a href="/test/search">도서검색</a></li>
+            <li><a href="/test/recommend">추천도서</a></li>
+            <li><a href="/test/new">신규도서</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="">게시판</a>
+          <ul>
+            <li><a href="/test/notice">공지사항</a></li>
+            <li><a href="/test/free">자유게시판</a></li>
+            <li><a href="/test/wantbook">희망도서</a></li>
+          </ul>
+        </li>
+        <li><a href="/test/mybook">내 서재</a></li>
+      </ul>
+    </nav>
+
+        <!-- 2줄 로그인 영역 -->
+        <div class="header-login">
+            <div class="login-inputs">
+                <input type="text" placeholder="아이디" id="loginId">
+                <input type="password" placeholder="비밀번호" id="loginPw">
+            </div>
+            <div class="login-buttons">
+                <button class="login" onclick="login()">로그인</button>
+                <a class="signup" onclick="location.href='member/register/form'">회원가입</a>
+            </div>
+        </div>
+        <div class="header-logout" style="display: none;">
+            <div class="login-inputs" style="visibility: hidden;">
+                <input type="text" placeholder="아이디" id="loginId">
+            </div>
+            <div class="auth-buttons">
+                <button class="logout">로그아웃</button>
+            </div>
+        </div>
+
+    <!-- 2줄 로그인 영역 -->
+    <!-- <div class="header-login">
+      <div class="login-inputs" style="display: none;">
+        <input type="text" placeholder="아이디" id="loginId">
+        <input type="password" placeholder="비밀번호" id="loginPw">
+      </div>
+      <div class="login-buttons" style="display: none;">
+        <button class="login" onclick="login()">로그인</button>
+        <button class="signup">회원가입</button>
+      </div>
+      <div class="auth-buttons" style="display: display;">
+        <button class="logout">로그아웃</button>
+      </div>
+    </div> -->
+  </th:block>

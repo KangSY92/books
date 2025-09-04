@@ -1,142 +1,92 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<head>
-    <meta charset="UTF-8">
-    <title>내 서재</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/book.css">
-    <link rel="stylesheet" href="/css/board.css">
-</head>
+<head th:insert="~{fragments/common/head :: head}">
 
 <body>
-    <header>
-        <div class="logo">📚 도서 대출 서비스</div>
 
-        <nav>
-            <ul>
-                <li><a href="index.html">홈</a></li>
-                <li>
-                    <a href="#">도서</a>
-                    <ul>
-                        <li><a href="#">도서검색</a></li>
-                        <li><a href="#">추천도서</a></li>
-                        <li><a href="#">신규도서</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">게시판</a>
-                    <ul>
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">자유게시판</a></li>
-                        <li><a href="#">희망도서</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">내 서재</a></li>
-            </ul>
-        </nav>
+	<header th:insert="~{fragments/common/header :: header}"></header>
 
-        <div class="header-login" style="display: none;">
-            <div class="login-inputs">
-                <input type="text" placeholder="아이디" id="loginId">
-                <input type="password" placeholder="비밀번호" id="loginPw">
-            </div>
-            <div class="login-buttons">
-                <button class="login" onclick="login()">로그인</button>
-                <button class="signup">회원가입</button>
-            </div>
-        </div>
-        <div class="header-logout">
-            <div class="login-inputs" style="visibility: hidden;">
-                <input type="text" placeholder="아이디" id="loginId">
-            </div>
-            <div class="auth-buttons" style="display: display;">
-                <button class="logout">로그아웃</button>
-            </div>
-        </div>
-    </header>
+	<main>
+		<h2 class="page-title">내 서재</h2>
 
-    <main>
-        <h2 class="page-title">내 서재</h2>
+		<!-- 검색창 -->
+		<div class="book-search-bar">
+			<select>
+				<option value="title">제목</option>
+				<option value="author">저자</option>
+				<option value="publisher">출판사</option>
+			</select>
+			<input type="text" placeholder="검색어를 입력하세요">
+			<button>검색</button>
+		</div>
 
-        <!-- 검색창 -->
-        <div class="book-search-bar">
-            <select>
-                <option value="title">제목</option>
-                <option value="author">저자</option>
-                <option value="publisher">출판사</option>
-            </select>
-            <input type="text" placeholder="검색어를 입력하세요">
-            <button>검색</button>
-        </div>
+		<!-- 책 목록 테이블 -->
+		<table class="book-table">
+			<thead>
+				<tr>
+					<th>이미지</th>
+					<th>제목</th>
+					<th>저자</th>
+					<th>출판사</th>
+					<th>상태</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><img src="https://shopping-phinf.pstatic.net/main_5118281/51182815714.20241105090357.jpg"
+							alt="해리포터와 마법사의 돌"></td>
+					<td>해리포터와 마법사의 돌</td>
+					<td>J.K. 롤링</td>
+					<td>문학동네</td>
+					<td class="status-borrowed">대출중</td>
+				</tr>
+				<tr>
+					<td><img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점">
+					</td>
+					<td>불편한 편의점</td>
+					<td>김호연</td>
+					<td>나무옆의자</td>
+					<td class="status-returned">반납완료</td>
+				</tr>
+				<tr>
+					<td><img src="https://shopping-phinf.pstatic.net/main_4077075/40770755621.20230801120536.jpg"
+							alt="아몬드"></td>
+					<td>아몬드</td>
+					<td>손원평</td>
+					<td>창비</td>
+					<td class="status-borrowed">대출중</td>
+				</tr>
+				<tr>
+					<td><img src="https://bookthumb-phinf.pstatic.net/cover/060/087/06008749.jpg" alt="데미안"></td>
+					<td>데미안</td>
+					<td>헤르만 헤세</td>
+					<td>열린책들</td>
+					<td class="status-returned">반납완료</td>
+				</tr>
+				<tr>
+					<td><img src="https://image.aladin.co.kr/product/758/33/cover500/8952759664_1.jpg" alt="인간 실격"></td>
+					<td>인간 실격</td>
+					<td>다자이 오사무</td>
+					<td>민음사</td>
+					<td class="status-borrowed">대출중</td>
+				</tr>
+			</tbody>
+		</table>
 
-        <!-- 책 목록 테이블 -->
-        <table class="book-table">
-            <thead>
-                <tr>
-                    <th>책표지</th>
-                    <th>제목</th>
-                    <th>저자</th>
-                    <th>출판사</th>
-                    <th>상태</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="https://shopping-phinf.pstatic.net/main_5118281/51182815714.20241105090357.jpg"
-                            alt="해리포터와 마법사의 돌"></td>
-                    <td>해리포터와 마법사의 돌</td>
-                    <td>J.K. 롤링</td>
-                    <td>문학동네</td>
-                    <td class="status-borrowed">대출중</td>
-                </tr>
-                <tr>
-                    <td><img src="https://image.aladin.co.kr/product/26942/84/cover/k582730818_1.jpg" alt="불편한 편의점">
-                    </td>
-                    <td>불편한 편의점</td>
-                    <td>김호연</td>
-                    <td>나무옆의자</td>
-                    <td class="status-returned">반납완료</td>
-                </tr>
-                <tr>
-                    <td><img src="https://shopping-phinf.pstatic.net/main_4077075/40770755621.20230801120536.jpg"
-                            alt="아몬드"></td>
-                    <td>아몬드</td>
-                    <td>손원평</td>
-                    <td>창비</td>
-                    <td class="status-borrowed">대출중</td>
-                </tr>
-                <tr>
-                    <td><img src="https://bookthumb-phinf.pstatic.net/cover/060/087/06008749.jpg" alt="데미안"></td>
-                    <td>데미안</td>
-                    <td>헤르만 헤세</td>
-                    <td>열린책들</td>
-                    <td class="status-returned">반납완료</td>
-                </tr>
-                <tr>
-                    <td><img src="https://image.aladin.co.kr/product/758/33/cover500/8952759664_1.jpg" alt="인간 실격"></td>
-                    <td>인간 실격</td>
-                    <td>다자이 오사무</td>
-                    <td>민음사</td>
-                    <td class="status-borrowed">대출중</td>
-                </tr>
-            </tbody>
-        </table>
+		<div class="pagination">
+			<button class="page-btn" onclick="goPage(1)">◀</button>
+			<button class="page-btn active" onclick="goPage(1)">1</button>
+			<button class="page-btn" onclick="goPage(2)">2</button>
+			<button class="page-btn" onclick="goPage(3)">3</button>
+			<button class="page-btn" onclick="goPage(4)">4</button>
+			<button class="page-btn" onclick="goPage(5)">5</button>
+			<button class="page-btn" onclick="goPage(2)">▶</button>
+		</div>
+	</main>
 
-        <div class="pagination">
-            <button class="page-btn" onclick="goPage(1)">◀</button>
-            <button class="page-btn active" onclick="goPage(1)">1</button>
-            <button class="page-btn" onclick="goPage(2)">2</button>
-            <button class="page-btn" onclick="goPage(3)">3</button>
-            <button class="page-btn" onclick="goPage(4)">4</button>
-            <button class="page-btn" onclick="goPage(5)">5</button>
-            <button class="page-btn" onclick="goPage(2)">▶</button>
-        </div>
-    </main>
+	<footer th:insert="~{fragments/common/footer :: footer}"></footer>
 
-    <footer>
-        © 2025 도서 대출 서비스. All rights reserved.
-    </footer>
 
 </body>
 
