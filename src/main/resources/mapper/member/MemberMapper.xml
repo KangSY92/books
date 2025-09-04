@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.books.member.mapper.MemberMapper">
+
+<insert id="register">
+INSERT INTO MEMBER VALUES(MEMBER_SEQ.nextval,
+#{id},
+#{name},
+#{password},
+#{phone},
+#{email},
+#{address},
+#{addressDetail},
+sysdate,
+null,
+null)
+</insert>
+
+</mapper>

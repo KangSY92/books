@@ -15,7 +15,7 @@ public class RegisterDTO {
 	private String id;
 	private String name;
 	private String password;
-	private String phoneNumber;
+	private String phone;
 	private String address;
 	private String addressDetail;
 	private String createDate;
