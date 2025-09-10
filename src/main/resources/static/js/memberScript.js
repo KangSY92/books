@@ -106,3 +106,47 @@ function submitbtn() {
 		alert("형식이 일치하지 않는 항목이 있습니다");
 	}
 }
+
+//이메일 인증
+const emailInput = document.getElementById("email");
+const emailVerifyBtn = document.getElementById("emailVerifyBtn");
+const emailCodeGroup = document.getElementById("emailCodeGroup");
+const emailCodeInput = document.getElementById("emailCode");
+const emailCodeVerifyBtn = document.getElementById("emailCodeVerifyBtn");
+let serverCode = null; // 서버에서 받은 인증코드 (임시 저장, 실제 구현 시 세션/DB 저장 필요)
+
+emailVerifyBtn.addEventListener("click", function() {
+    const email = emailInput.value.trim();
+    if (!email) {
+        alert("이메일을 입력해주세요.");
+        return;
+    }
+
+    // 이메일 인증 코드 요청
+    fetch("/api/auth/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.text())
+    .then(result => {
+        alert("인증코드가 발송되었습니다!");
+        emailCodeGroup.style.display = "block";
+        // 서버 코드 예시는 JS에서 임시로 저장 (실제 구현은 서버 DB/세션 사용)
+        serverCode = "123456"; 
+    })
+    .catch(error => {
+        alert("메일 발송 실패: " + error);
+    });
+});
+
+// 인증번호 확인 버튼 클릭 시
+emailCodeVerifyBtn.addEventListener("click", function() {
+    const inputCode = emailCodeInput.value.trim();
+    if (inputCode === serverCode) {
+        emailCodeInput.disabled = true;
+        emailCodeVerifyBtn.disabled = true;
+    } else {
+        document.getElementById("emailCodeHint").style.display = "block";
+    }
+});

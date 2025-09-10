@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.books.member.dto.RegisterDTO;
+import kr.co.books.member.dto.RegisterRequestDTO;
 import kr.co.books.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
@@ -24,9 +25,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/register")
-	public String register(RegisterDTO registerDTO) {
-		memberService.register(registerDTO);
-		System.out.println(registerDTO.getPassword());
+	public String register(RegisterRequestDTO registerRequest) {
+		memberService.register(registerRequest);
 		return "redirect:/";
 	}
 }
