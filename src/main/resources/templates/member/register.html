@@ -56,12 +56,14 @@
 				<div class="form-group" id="emailCodeGroup">
 					<label for="emailCode">인증번호</label>
 					<div class="email-verification-group">
-					<input type="text" id="emailCode" name="emailCode" placeholder="인증번호 입력">
+					<input type="text" id="emailCode" name="inputCode" placeholder="인증번호 입력">
 					<button type="button" id="emailCodeVerifyBtn">인증 확인</button>
 					</div>
 					<small id="emailCodeHint" class="form-hint" style="color: red; display: none;">인증번호가 일치하지 않습니다</small>
 				</div>
 
+				<input type="hidden" name="inputCode" id="inputCodeHidden">
+				
 				<div class="form-group">
 					<label for="address">주소</label>
 					<input type="text" id="address" name="address" placeholder="도로명/지번 입력" th:field="*{address}" required>

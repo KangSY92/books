@@ -5,7 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import jakarta.servlet.http.HttpSession;
 import kr.co.books.member.dto.RegisterDTO;
 import kr.co.books.member.dto.RegisterRequestDTO;
 import kr.co.books.member.service.MemberService;
@@ -25,8 +27,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/register")
-	public String register(RegisterRequestDTO registerRequest) {
-		memberService.register(registerRequest);
+	public String register(RegisterRequestDTO registerRequest,  @RequestParam("inputCode")String inputCode) {
+		memberService.register(registerRequest, inputCode);
 		return "redirect:/";
 	}
 }
