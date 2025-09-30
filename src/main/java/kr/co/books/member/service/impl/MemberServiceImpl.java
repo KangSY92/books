@@ -26,6 +26,8 @@ public class MemberServiceImpl implements MemberService {
 	public void register(RegisterRequestDTO registerRequest,
 						 String inputCode) {
 		
+        String email = registerRequest.getEmail(); // 이메일 가져오기
+        
 		//비밀번호 암호화
 		String rawPassword = registerRequest.getPassword();
 		String passEncode = passwordEncoder.encode(rawPassword);
@@ -33,8 +35,10 @@ public class MemberServiceImpl implements MemberService {
 		Member member = registerRequest.toMember(passEncode);
 		
 		//이메일 인증 확인
-		if(authService.verifyCode(inputCode)) {
+		if(authService.verifyCode(email, inputCode)) {
+			
 			memberMapper.register(member);
+			authService.clearCode(email);
 		} else {
 			System.out.println("이메일 인증 실패");
 		}		

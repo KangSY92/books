@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import kr.co.books.member.dto.EmailVerifyRequestDTO;
 import kr.co.books.member.dto.ReqEmailDTO;
 import kr.co.books.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +30,15 @@ public class AuthController {
     
  // 인증번호 확인
     @PostMapping("/email/verify")
-    public ResponseEntity<String> verifyCode(@RequestBody Map<String, String> body) {
-        String inputCode = body.get("inputCode"); // JSON에서 가져오기
-        boolean result = authService.verifyCode(inputCode);
+    public ResponseEntity<String> verifyCode(@RequestBody  @Valid EmailVerifyRequestDTO requestDTO) {
+        System.out.println("컨트롤러 Request DTO: email=" + requestDTO.getEmail() + ", inputCode=" + requestDTO.getInputCode());
+
+    	
+        String email = requestDTO.getEmail();
+        String inputCode = requestDTO.getInputCode();
+        
+        boolean result = authService.verifyCode(email, inputCode);
+        
         return result ? ResponseEntity.ok("success") : ResponseEntity.ok("fail");
     }
 }

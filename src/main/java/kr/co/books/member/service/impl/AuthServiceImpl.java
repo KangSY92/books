@@ -1,7 +1,9 @@
 package kr.co.books.member.service.impl;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -16,14 +18,22 @@ public class AuthServiceImpl implements AuthService {
 
     private final JavaMailSender mailSender;
     
-    // 마지막 발송 코드 저장
-    private String lastCodeSent;
-
+    private final StringRedisTemplate redisTemplate;
+    
     @Override
     public void sendEmailCode(ReqEmailDTO emailDTO) {
+    	
+        // 1. 인증코드 생성
         String code = generateCode();
+
+        // 2. 이메일 발송
         sendEmail(emailDTO.getEmail(), code);
-        lastCodeSent = code;
+
+        // 3. Redis에 저장 (TTL 5분)
+        String emailKey = getKey(emailDTO.getEmail());
+        redisTemplate.opsForValue().set(emailKey, code, 5, TimeUnit.MINUTES);
+        
+        System.out.println("sendEmailCode: key=" + emailKey + ", code=" + code);
     }
 
     private String generateCode() {
@@ -37,12 +47,28 @@ public class AuthServiceImpl implements AuthService {
         message.setFrom("tjrdud471@naver.com");
         message.setTo(to);
         message.setSubject("[서비스명] 이메일 인증 코드");
-        message.setText("요청하신 인증 코드는 [" + code + "] 입니다.\n3분 내에 입력해주세요.");
+        message.setText("요청하신 인증 코드는 [" + code + "] 입니다.\n5분 내에 입력해주세요.");
         mailSender.send(message);
     }
 
     @Override
-    public boolean verifyCode(String inputCode) {
-        return lastCodeSent != null && lastCodeSent.equals(inputCode);
+    public boolean verifyCode(String email, String inputCode) {
+    	
+        String emailKey = getKey(email);
+        String savedCode = redisTemplate.opsForValue().get(emailKey);
+        
+        System.out.println("verifyCode: key=" + emailKey + ", inputCode=" + inputCode + ", savedCode=" + savedCode);
+        
+        return savedCode != null && savedCode.equals(inputCode);
+    }    
+    
+    // 성공 시점에 삭제
+    @Override
+    public void clearCode(String email) {
+        redisTemplate.delete(getKey(email));
+    }
+    
+    private String getKey(String email) {
+        return "emailCode:" + email.trim().toLowerCase();
     }
 }

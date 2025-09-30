@@ -122,13 +122,17 @@ emailVerifyBtn.addEventListener("click", function() {
 });
 
 emailCodeVerifyBtn.addEventListener("click", function() {
+	const email = emailInput.value.trim();
     const inputCode = emailCodeInput.value.trim();
     if(!inputCode) return alert("인증번호 입력 필요");
 
     fetch("/api/auth/email/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ inputCode })
+		body: JSON.stringify({ 
+		    email: email,
+		    inputCode: inputCode 
+			})
     })
     .then(res => res.text())
     .then(result => {

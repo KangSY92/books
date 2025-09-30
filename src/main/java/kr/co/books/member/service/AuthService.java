@@ -7,5 +7,7 @@ public interface AuthService {
 	
 	 void sendEmailCode(ReqEmailDTO emailDTO);
 
-	 boolean verifyCode(String inputCode);
+	 boolean verifyCode(String email, String inputCode);
+	 
+	 void clearCode(String email);
 }
