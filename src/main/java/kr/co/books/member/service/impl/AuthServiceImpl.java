@@ -8,6 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import static kr.co.books.global.config.MailConfig.*;
 import kr.co.books.member.dto.ReqEmailDTO;
 import kr.co.books.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -44,10 +45,10 @@ public class AuthServiceImpl implements AuthService {
 
     private void sendEmail(String to, String code) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("tjrdud471@naver.com");
+        message.setFrom(MAIL_FROM);
         message.setTo(to);
-        message.setSubject("[서비스명] 이메일 인증 코드");
-        message.setText("요청하신 인증 코드는 [" + code + "] 입니다.\n5분 내에 입력해주세요.");
+        message.setSubject(MAIL_SUBJECT);
+        message.setText(String.format(MAIL_CONTENT, code));
         mailSender.send(message);
     }
 
@@ -67,7 +68,7 @@ public class AuthServiceImpl implements AuthService {
     public void clearCode(String email) {
         redisTemplate.delete(getKey(email));
     }
-    
+  
     private String getKey(String email) {
         return "emailCode:" + email.trim().toLowerCase();
     }

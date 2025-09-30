@@ -20,6 +20,8 @@ public class RegisterRequestDTO {
 	private String address;
 	private String addressDetail;
 	
+	private String inputCode;
+	
 	
 	public Member toMember(String passEncode) {
 		return Member.builder()

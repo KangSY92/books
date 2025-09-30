@@ -14,7 +14,7 @@ import kr.co.books.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("member")
+@RequestMapping("/member")
 @RequiredArgsConstructor
 public class MemberController {
 	
@@ -27,8 +27,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/register")
-	public String register(RegisterRequestDTO registerRequest,  @RequestParam("inputCode")String inputCode) {
-		memberService.register(registerRequest, inputCode);
+	public String register(RegisterRequestDTO registerRequest) {
+		memberService.register(registerRequest, registerRequest.getInputCode());
 		return "redirect:/";
 	}
 }
