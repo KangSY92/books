@@ -3,13 +3,14 @@ package kr.co.books.member.service.impl;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import static kr.co.books.global.config.MailConfig.*;
-import kr.co.books.member.dto.ReqEmailDTO;
+import kr.co.books.member.dto.EmailRequestDTO;
 import kr.co.books.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,8 +22,11 @@ public class AuthServiceImpl implements AuthService {
     
     private final StringRedisTemplate redisTemplate;
     
+    @Value("${app.mail.from}")
+    private String mailFrom;
+    
     @Override
-    public void sendEmailCode(ReqEmailDTO emailDTO) {
+    public void sendEmailCode(EmailRequestDTO emailDTO) {
     	
         // 1. 인증코드 생성
         String code = generateCode();
@@ -34,7 +38,7 @@ public class AuthServiceImpl implements AuthService {
         String emailKey = getKey(emailDTO.getEmail());
         redisTemplate.opsForValue().set(emailKey, code, 5, TimeUnit.MINUTES);
         
-        System.out.println("sendEmailCode: key=" + emailKey + ", code=" + code);
+        System.out.println("sendEmailCode =" + code);
     }
 
     private String generateCode() {
@@ -45,7 +49,7 @@ public class AuthServiceImpl implements AuthService {
 
     private void sendEmail(String to, String code) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom(MAIL_FROM);
+        message.setFrom(mailFrom);
         message.setTo(to);
         message.setSubject(MAIL_SUBJECT);
         message.setText(String.format(MAIL_CONTENT, code));
@@ -57,9 +61,7 @@ public class AuthServiceImpl implements AuthService {
     	
         String emailKey = getKey(email);
         String savedCode = redisTemplate.opsForValue().get(emailKey);
-        
-        System.out.println("verifyCode: key=" + emailKey + ", inputCode=" + inputCode + ", savedCode=" + savedCode);
-        
+                
         return savedCode != null && savedCode.equals(inputCode);
     }    
     

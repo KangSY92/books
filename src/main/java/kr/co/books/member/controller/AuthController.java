@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import kr.co.books.member.dto.EmailVerifyRequestDTO;
-import kr.co.books.member.dto.ReqEmailDTO;
+import kr.co.books.member.dto.EmailRequestDTO;
 import kr.co.books.member.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
@@ -23,7 +23,7 @@ public class AuthController {
 
     // 메일 발송
     @PostMapping("/email")
-    public ResponseEntity<String> sendEmail(@Valid @RequestBody ReqEmailDTO emailDTO) {
+    public ResponseEntity<String> sendEmail(@Valid @RequestBody EmailRequestDTO emailDTO) {
         authService.sendEmailCode(emailDTO);
         return ResponseEntity.ok("success");
     }
@@ -31,8 +31,6 @@ public class AuthController {
  // 인증번호 확인
     @PostMapping("/email/verify")
     public ResponseEntity<String> verifyCode(@RequestBody  @Valid EmailVerifyRequestDTO requestDTO) {
-        System.out.println("컨트롤러 Request DTO: email=" + requestDTO.getEmail() + ", inputCode=" + requestDTO.getInputCode());
-
     	
         String email = requestDTO.getEmail();
         String inputCode = requestDTO.getInputCode();

@@ -1,11 +1,11 @@
 package kr.co.books.member.service;
 
 import jakarta.servlet.http.HttpSession;
-import kr.co.books.member.dto.ReqEmailDTO;
+import kr.co.books.member.dto.EmailRequestDTO;
 
 public interface AuthService {
 	
-	 void sendEmailCode(ReqEmailDTO emailDTO);
+	 void sendEmailCode(EmailRequestDTO emailDTO);
 
 	 boolean verifyCode(String email, String inputCode);
 	 
