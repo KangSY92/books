@@ -4,7 +4,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
+import kr.co.books.global.config.JwtTokenProvider;
 import kr.co.books.member.domain.Member;
+import kr.co.books.member.dto.LoginRequestDTO;
+import kr.co.books.member.dto.LoginResponseDTO;
 import kr.co.books.member.dto.RegisterDTO;
 import kr.co.books.member.dto.RegisterRequestDTO;
 import kr.co.books.member.mapper.MemberMapper;
@@ -21,6 +24,8 @@ public class MemberServiceImpl implements MemberService {
 	private final AuthService authService; 
 	
 	private final PasswordEncoder passwordEncoder;
+	
+	 private final JwtTokenProvider jwtTokenProvider;
 
 	@Override
 	public void register(RegisterRequestDTO registerRequest,
@@ -43,5 +48,23 @@ public class MemberServiceImpl implements MemberService {
 			System.out.println("이메일 인증 실패");
 		}		
 	}
+
+	@Override
+	public LoginResponseDTO login(LoginRequestDTO loginRequest) {
+		Member result = memberMapper.login(loginRequest);
+        if (result == null) return null;
+
+        if (!passwordEncoder.matches(loginRequest.getPassword(), result.getPassword())) {
+            return null;
+        }
+
+        String accessToken = jwtTokenProvider.generateAccessToken(result.getId());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(result.getId());	
+        
+        return LoginResponseDTO.from(result, accessToken, refreshToken);
+
+	}
+	
+
 
 }

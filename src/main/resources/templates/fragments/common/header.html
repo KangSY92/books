@@ -25,22 +25,24 @@
     </nav>
 
         <!-- 2줄 로그인 영역 -->
-        <div class="header-login">
+        <div th:if="${session.name == null}" class="header-login">
+			<form th:action="@{/member/login}" method="post" class="header-form">
             <div class="login-inputs">
-                <input type="text" placeholder="아이디" id="loginId">
-                <input type="password" placeholder="비밀번호" id="loginPw">
+                <input type="text" name="id" placeholder="아이디" id="loginId">
+                <input type="password" name="password" placeholder="비밀번호" id="loginPw">
             </div>
             <div class="login-buttons">
-                <button class="login" onclick="login()">로그인</button>
+                <button type="submit" class="login">로그인</button>
                 <a class="signup" href="/member/register/form">회원가입</a>
             </div>
+			</form>
         </div>
-        <div class="header-logout" style="display: none;">
+        <div th:if="${session.name != null}" class="header-logout">
             <div class="login-inputs" style="visibility: hidden;">
                 <input type="text" placeholder="아이디" id="loginId">
             </div>
             <div class="auth-buttons">
-                <button class="logout">로그아웃</button>
+                <a class="logout" href="/member/logout">로그아웃</a>
             </div>
         </div>
 

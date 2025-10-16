@@ -22,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
     
     private final StringRedisTemplate redisTemplate;
     
-    @Value("${app.mail.from}")
+    @Value("${spring.mail.username}")
     private String mailFrom;
     
     @Override
