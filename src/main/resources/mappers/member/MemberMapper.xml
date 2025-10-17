@@ -17,4 +17,22 @@ null,
 null)
 </insert>
 
+<resultMap id="loginResultMap" type="kr.co.books.member.domain.Member">
+	<result column="MEMBER_ID" property="memberId" />
+	<result column="ID" property="id" />
+	<result column="NAME" property="name" />
+	<result column="PASSWORD" property="password" />
+	<result column="PHONE" property="phone" />
+	<result column="EMAIL" property="email" />
+	<result column="ADDRESS" property="address" />
+	<result column="ADDRESS_DETAIL" property="addressDetail" />
+	<result column="CREATE_DATE" property="createDate" />
+	<result column="UPDATE_DATE" property="updateDate" />
+	<result column="DELETE_DATE" property="deleteDate" />
+</resultMap>
+
+<select id="login" resultMap="loginResultMap">
+SELECT ID, NAME, PASSWORD, PHONE, EMAIL FROM MEMBER WHERE ID=#{id}
+</select>
+
 </mapper>
