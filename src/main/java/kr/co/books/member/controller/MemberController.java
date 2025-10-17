@@ -1,5 +1,6 @@
 package kr.co.books.member.controller;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,12 @@ public class MemberController {
 	private final MemberService memberService;
 	
 	private final PasswordEncoder passwordEncoder;
+	
+	@Value("${jwt.access-token-validity}")
+	private long accessTokenValidity;
+
+	@Value("${jwt.refresh-token-validity}")
+	private long refreshTokenValidity;
 
 	@GetMapping("/register/form")
 	public String registerForm(Model model) {
@@ -39,7 +46,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public String login(LoginRequestDTO loginRequest, HttpSession session, HttpServletResponse response) {
+	public String login(LoginRequestDTO loginRequest, HttpSession session,
+			HttpServletResponse response) {
 		LoginResponseDTO result = memberService.login(loginRequest);
 		
 		if(result == null) {
@@ -56,12 +64,12 @@ public class MemberController {
 	    Cookie accessCookie = new Cookie("accessToken", result.getAccessToken());
 	    accessCookie.setHttpOnly(true);
 	    accessCookie.setPath("/");
-	    accessCookie.setMaxAge(60 * 30); // 30분
+	    accessCookie.setMaxAge((int) accessTokenValidity); // 30분
 
 	    Cookie refreshCookie = new Cookie("refreshToken", result.getRefreshToken());
 	    refreshCookie.setHttpOnly(true);
 	    refreshCookie.setPath("/");
-	    refreshCookie.setMaxAge(60 * 60 * 24 * 7); // 7일
+	    refreshCookie.setMaxAge((int) refreshTokenValidity); // 7일
 
 	    response.addCookie(accessCookie);
 	    response.addCookie(refreshCookie);
